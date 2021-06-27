@@ -72,7 +72,7 @@ double bars2N(double& P_bar, double mu, double& g){
 // km
 double mass(double& D){
   const double rho = 3.0e12; // kg/km3 (Morbidelli et al. 2012)
-  return rho*(4./3.)*M_PI*std::pow(D/2.0,3.0)*1.0e3; // mass in g
+  return rho*(4./3.)*3.14159*std::pow(D/2.0,3.0)*1.0e3; // mass in g
 }
 
 void impact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, 

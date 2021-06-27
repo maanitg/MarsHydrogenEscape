@@ -7,7 +7,7 @@ add_library( lsoda ${CMAKE_CURRENT_SOURCE_DIR}/LSODA.cpp)
 
 if( "${CMAKE_BUILD_TYPE}" STREQUAL "Release" )
     message( STATUS "Building for release" )
-    set_target_properties( lsoda PROPERTIES COMPILE_FLAGS "-Werror -Wall")
+    set_target_properties( lsoda PROPERTIES COMPILE_FLAGS "-Wall")
 else()
     message( STATUS "Building for DEBUG mode" )
 endif()
