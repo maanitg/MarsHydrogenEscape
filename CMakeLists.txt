@@ -8,7 +8,7 @@ add_subdirectory(src/libsoda)
 target_link_libraries(Mars PUBLIC lsoda)
 target_link_libraries(Mars PUBLIC interp)
 
-add_library(interp ${CMAKE_CURRENT_SOURCE_DIR}/src/interpolation/pwl_interp_2d_scattered.cpp
+add_library(interp SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/interpolation/pwl_interp_2d_scattered.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/src/interpolation/r8lib.cpp)
                    
 if(NOT CMAKE_BUILD_TYPE)
