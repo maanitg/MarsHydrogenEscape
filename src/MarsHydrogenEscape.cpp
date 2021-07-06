@@ -46,15 +46,17 @@ void react_iron(double& N_H2O_steam,double& N_CO2,double& M_i, double& area, dou
   double Moles_Fe = Fe_react_frac*impactor_Fe_frac*M_i/56.;
   double N_Fe = Moles_Fe/area;
   double xxx = N_Fe/(N_H2O_steam +N_CO2); //moles Fe/moles O
-  if (xxx < 1.0){
-    N_H2 = xxx*N_H2O_steam;
-    N_H2O = (1-xxx)*N_H2O_steam;
-    N_CO = xxx*N_CO2;
-    N_CO2_out = (1-xxx)*N_CO2;
+  if (xxx > 1.0){
+    xxx = 1.0;
   }
-  else{
-    throw "More Fe than O!";
-  }   
+  N_H2 = xxx*N_H2O_steam;
+  N_H2O = (1-xxx)*N_H2O_steam;
+  N_CO = xxx*N_CO2;
+  N_CO2_out = (1-xxx)*N_CO2;
+  // }
+  // else{
+  //   throw "More Fe than O!";
+  // }   
 }
 
 double gel2N(double& gel){
