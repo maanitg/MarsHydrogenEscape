@@ -13,7 +13,7 @@
 double steam_from_impact(double& N_H2O_ocean, double& N_CO2, 
                       double& N_N2, double& m_i, double& area);
 
-void react_iron(double& N_H2O_steam,double& N_CO2,double& M_i, double& area, double& Fe_react_frac,
+double react_iron(double& N_H2O_steam,double& N_CO2,double& M_i, double& area, double& Fe_react_frac,
                 double& N_H2, double& N_H2O, double& N_CO, double& N_CO2_out);
 
 double gel2N(double& gel);
@@ -22,7 +22,7 @@ double bars2N(double& P_bar, double mu, double& g);
 
 double mass(double& D);
 
-void impact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, 
+double impact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, 
             double& Fe_react_frac, double& M_i, double& grav, double& area,
             double& N_H2, double& N_t, double& N_x, double& mu_x);
 
