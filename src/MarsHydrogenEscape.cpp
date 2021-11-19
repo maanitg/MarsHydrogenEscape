@@ -280,7 +280,11 @@ double MarsHydrogenEscape::WarmTimeAfterImpact(double& ocean_GEL_cm, double& P_C
       break;
     }
   }
-  return [lsoda.tn_, N_H2O_ocean_new];
+  std::vector<double> out;
+  out.resize(2);
+  out[0] = lsoda.tn_;
+  out[1] = N_H2O_ocean_new;
+  return out;
 }
   
 double MarsHydrogenEscape::WarmTimeAfterSeveralImpacts(std::vector<double>& x){
