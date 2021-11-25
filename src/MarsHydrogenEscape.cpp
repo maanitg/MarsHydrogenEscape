@@ -78,7 +78,7 @@ double mass(double& D){
   return rho*(4./3.)*3.14159*std::pow(D/2.0,3.0)*1.0e3; // mass in g
 }
 
-void impact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, 
+double impact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, 
             double& Fe_react_frac, double& M_i, double& grav, double& area,
             double& N_H2, double& N_t, double& N_x, double& mu_x)
 {
@@ -239,7 +239,7 @@ void MarsHydrogenEscape::rhs(double t, double *y, double *ydot, void *data){
   ydot[0] = dNH2_dt/N_avo_;
 }
   
-double MarsHydrogenEscape::WarmTimeAfterImpact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, \
+std::vector<double> MarsHydrogenEscape::WarmTimeAfterImpact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, \
                                               double& Fe_react_frac, double& M_i){
     
   double N_H2_init, N_t_init, N_x, mu_x;
@@ -265,7 +265,11 @@ double MarsHydrogenEscape::WarmTimeAfterImpact(double& ocean_GEL_cm, double& P_C
   double Temp = mars.MarsSurfTemp(fH2,Psurf);
   
   if (Temp < 273.0){
-    return 0.0;
+    std::vector<double> out1;
+    out1.resize(2);
+    out1[0] = 0;
+    out1[1] = N_H2O_ocean_new;
+    return out1;
   }
   
   while (true){
@@ -296,7 +300,7 @@ double MarsHydrogenEscape::WarmTimeAfterSeveralImpacts(std::vector<double>& x){
   double tot_warm_time = 0.0;
   for (int i = 0; i < impact_diameters.size(); i++){
     double M_i = mass(impact_diameters[i]);
-    std::vector result = WarmTimeAfterImpact(ocean_GEL_cm, P_CO2_bars, P_N2_bars, \
+    std::vector<double> result = WarmTimeAfterImpact(ocean_GEL_cm, P_CO2_bars, P_N2_bars, \
                                          Fe_react_frac, M_i);
     tot_warm_time += result[0];
     ocean_GEL_cm = result[1];

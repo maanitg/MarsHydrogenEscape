@@ -66,7 +66,7 @@ public:
   
   static void rhs(double t, double *y, double *ydot, void *data);
   
-  double WarmTimeAfterImpact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, \
+  std::vector<double> WarmTimeAfterImpact(double& ocean_GEL_cm, double& P_CO2_bars, double& P_N2_bars, \
                              double& Fe_react_frac, double& M_i);
   
   double WarmTimeAfterSeveralImpacts(std::vector<double>& x);
